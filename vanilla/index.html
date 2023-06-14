@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" placeholder="email">
+   <input type="text" placeholder="password">
+   <button>Sign in</button>
+   <br/>
+  <div id="problems-statements" style="width: 70vw;">
+      <table>
+          <tr>
+            <td style="width:20vw"></td>
+            <td style="width:20vw"></td>
+            <td style="width:20vw; color:red"></td>
+        </tr>
+      </table>
+  </div>
+</body>
+<script>
+    const problems = [
+    {
+        title:"201, invert BT",
+        difficulty:"Medium",
+        accpetance:"42%"
+    },
+    {
+        title:"202,2-sum",
+        difficulty:"Medium",
+        accpetance:"42%"
+    },
+    {
+        title:"203, coins",
+        difficulty:"Medium",
+        accpetance:"42%"
+    }]
+
+
+
+    function renderProblems(){
+        const parentEl = document.getElementById("problems-statements");
+        const tableTag = document.createElement("table"); //HTML is stored not yet appended to HTML dom
+        const trTag = document.createElement("tr"); //create row and add td as child to it
+        for(let i=0;i<problems.length;i++){
+            const trTag = document.createElement("tr");
+            const tdEl1 = document.createElement("td");
+            tdEl1.innerHTML = problems[i].title;
+            const tdEl2 = document.createElement("td");
+            tdEl2.innerHTML = problems[i].difficulty;
+            const tdEl3 = document.createElement("td");
+            tdEl3.innerHTML = problems[i].accpetance;
+
+            trTag.appendChild(tdEl1);  //rendered in HTML
+            trTag.appendChild(tdEl2);
+            trTag.appendChild(tdEl3);
+            tableTag.appendChild(trTag); //td is child of tr.tr is child of table.sort of recursion happening
+        }
+        parentEl.appendChild(tableTag);
+    }
+    renderProblems();
+</script>
+</html>
