@@ -12,7 +12,7 @@
    <button>Sign in</button>
    <br/>
   <div id="problems-statements" style="width: 70vw;">
-      <table>
+      <table id="tble">
           <tr>
             <td style="width:20vw"></td>
             <td style="width:20vw"></td>
@@ -20,9 +20,11 @@
         </tr>
       </table>
   </div>
+  <button id="btn1">1</button>
+  <button id="btn2">2</button>
 </body>
 <script>
-    const problems = [
+    const problems1 = [
     {
         title:"201, invert BT",
         difficulty:"Medium",
@@ -39,9 +41,24 @@
         accpetance:"42%"
     }]
 
+    const problems2 = [
+    {
+        title:"204, reverse LL",
+        difficulty:"Medium",
+        accpetance:"42%"
+    },
+    {
+        title:"205,filter dupli",
+        difficulty:"Medium",
+        accpetance:"42%"
+    },
+    {
+        title:"206, invert graph",
+        difficulty:"Medium",
+        accpetance:"42%"
+    }]
 
-
-    function renderProblems(){
+    function renderProblems(problems){
         const parentEl = document.getElementById("problems-statements");
         const tableTag = document.createElement("table"); //HTML is stored not yet appended to HTML dom
         const trTag = document.createElement("tr"); //create row and add td as child to it
@@ -61,6 +78,20 @@
         }
         parentEl.appendChild(tableTag);
     }
-    renderProblems();
+
+    let btn1 =document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+
+    btn1.addEventListener("click",function(){
+        document.getElementById("problems-statements").innerHTML="";
+        renderProblems(problems1);
+        console.log("Button clicked!");
+    })
+
+    btn2.addEventListener("click",function(){
+        document.getElementById("problems-statements").innerHTML="";
+        renderProblems(problems2);
+        console.log("Button clicked!");
+    })
 </script>
 </html>
