@@ -3,33 +3,78 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const problems1 = [
+  {
+      title:"201, invert BT",
+      difficulty:"Medium",
+      acceptance:"42%"
+  },
+  {
+      title:"202,2-sum",
+      difficulty:"Medium",
+      acceptance:"42%"
+  },
+  {
+      title:"203, coins",
+      difficulty:"Medium",
+      acceptance:"42%"
+  }]
+
+  const problems2 = [
+  {
+      title:"204, reverse LL",
+      difficulty:"Medium",
+      acceptance:"42%"
+  },
+  {
+      title:"205,filter dupli",
+      difficulty:"Medium",
+      acceptance:"42%"
+  },
+  {
+      title:"206, invert graph",
+      difficulty:"Medium",
+      acceptance:"42%"
+  }]
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [problems, setProblems] = useState([]);
+
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <input type="text" placeholder="email"></input>
+   <input type="text" placeholder="password"></input>
+   <button>Sign in</button>
+  
+   <div>
+  <button onClick={() => setProblems((problems) => problems1)}>1</button>
+  <button onClick={() => setProblems((problems) => problems2)}>2</button>
+</div>
+
+  <div>
+ {problems.map(problem=>
+    <ProblemStatement title={problem.title}
+    acceptance = {problem.acceptance}
+    difficulty = {problem.difficulty}
+  ></ProblemStatement>)}
+  </div>
+    </div>
   )
+}
+
+function ProblemStatement(props){
+  const title = props.title;
+  const acceptance = props.acceptance;
+  const difficulty = props.difficulty;
+
+  return <tr>
+    <td>{title}</td>
+    <td>{acceptance}</td>
+    <td>{difficulty}</td>
+  </tr>
+
 }
 
 export default App
